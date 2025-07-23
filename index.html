@@ -1,1 +1,83 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MeasureXpert</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h1 class="title is-1">MeasureXpert: Automatic Anthropometric Measurement Extraction from Two Unregistered, Partial, Posed, and Dressed Body Scans</h1>
+        <div class="is-size-5 publication-authors">
+          <p>
+            <a href="http://bmkitmef.etrovub.be/RanZhao">Ran Zhao</a><sup>1</sup>,
+            <a href="http://bmkitmef.etrovub.be/XinxinDai">Xinxin Dai</a><sup>1</sup>,
+            <a href="https://ai4engineeringlab.netlify.app/author/pengpeng-hu/">Pengpeng Hu</a><sup>2</sup>,
+            <a href="https://pureportal.coventry.ac.uk/en/persons/vasile-palade">Vasile Palade</a><sup>3</sup>,
+            <a href="http://bmkitmef.etrovub.be/AdrianMunteanu">Adrian Munteanu</a><sup>1</sup>,
+          </p>
+          <p><sup>1</sup>Vrije Universiteit Brussel, <sup>2</sup>The University of Manchester</p>,<sup>3</sup>Coventry University</p>
+        </div>
+        <div class="publication-links" style="margin-top: 1em;">
+          <a href="#" class="button is-dark is-rounded">📄 Paper</a>
+          <a href="#" class="button is-dark is-rounded">📝 arXiv</a>
+          <a href="#" class="button is-dark is-rounded">▶️ Video</a>
+          <a href="#" class="button is-dark is-rounded">💻 Code</a>
+          <a href="#" class="button is-dark is-rounded">🗂 Data</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Video</h2>
+      <div class="publication-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/MrKrnHhk8IA" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            While automatic anthropometric measurement extraction has witnessed growth in recent years, effective, non-contact, and precise measurement methods for dressed humans in arbitrary poses are still lacking, limiting the widespread application of this technology. 
+The occlusion caused by clothing and the adverse influence of posture on body shape significantly increase the complexity of this task. 
+Additionally, current methods often assume the availability of a complete 3D body mesh in a canonical pose (e.g., "A" or "T" pose), which is not always the case in practice. To address these challenges, we propose MeasureXpert, a novel learning-based model that requires only two unregistered, partial, and dressed body scans as input, and accommodates entirely independent and arbitrary poses for each scan. MeasureXpert computes a comprehensive representation of the naked body shape by synergistically fusing features from the front- and back-view partial point clouds. The comprehensive representation obtained is mapped onto a 3D undressed body shape space, assuming a canonical posture and incorporating predefined measurement landmarks. A point-based offset optimization is also developed to refine the reconstructed complete body shape, enabling accurate regression of measurement values. To train the proposed model, a new large-scale dataset,
+consisting of 300K samples, was synthesized. The proposed model was validated using two publicly available real-world datasets and was compared with different relevant methods.
+Extensive experimental results demonstrate that MeasureXpert
+achieves superior performance compared to the reference methods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{zhao2025measurexpert,
+  author    = {Ran Zhao, Xinxin Dai, Pengpeng Hu, Vasile Palade, Adrian Munteanu},
+  title     = {MeasureXpert: Automatic Anthropometric Measurement Extraction from Two Unregistered, Partial, Posed, and Dressed Body Scans},
+  journal   = {ICCV},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+</body>
+</html>
