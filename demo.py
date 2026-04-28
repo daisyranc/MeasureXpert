@@ -9,7 +9,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import pandas as pd
 
 def pcd2ply(pcd):
-    mesh_file_path = '/home/pm/5117.ply'
+    mesh_file_path = './body_seg/5117.ply'
     ply_input = o3d.io.read_triangle_mesh(mesh_file_path)
     input = pcd
     ply_input.vertices = input.points
@@ -136,7 +136,7 @@ head_b_idx,right_arm_b_idx,left_arm_b_idx,right_leg_b_idx,left_leg_b_idx,
     return new_array
 
 def demo(model_type,checkpoints,input_f_root,input_b_root,vis=True,save=False):
-    root="/media/pm/Elements/partial2complete/body_segmentation/"
+    root="./body_seg/"
     complete_path=root+"visualize_30.ply"
     head_path=root+"head_30.ply"
     right_arm_path=root+"right_arm_30.ply"
@@ -261,18 +261,18 @@ def demo(model_type,checkpoints,input_f_root,input_b_root,vis=True,save=False):
         pcd_back=point2pcd(pred_points_back)
         pcd_t=point2ply(pred_points_t)
         # ======recombine mesh====================
-        head_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/head.txt", dtype=int)
+        head_idx = np.loadtxt("./body_seg/head.txt", dtype=int)
         print(head_idx.shape[0])
-        ra_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/ra.txt", dtype=int)
-        la_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/la.txt", dtype=int)
-        rl_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/rl.txt", dtype=int)
-        ll_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/ll.txt", dtype=int)
+        ra_idx = np.loadtxt("./body_seg/ra.txt", dtype=int)
+        la_idx = np.loadtxt("./body_seg/la.txt", dtype=int)
+        rl_idx = np.loadtxt("./body_seg/rl.txt", dtype=int)
+        ll_idx = np.loadtxt("./body_seg/ll.txt", dtype=int)
 
-        head_b_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/head_b.txt", dtype=int)
-        ra_b_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/ra_b.txt", dtype=int)
-        la_b_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/la_b.txt", dtype=int)
-        rl_b_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/rl_b.txt", dtype=int)
-        ll_b_idx = np.loadtxt("/media/pm/Elements/partial2complete/centered_data/lmdb/ll_b.txt", dtype=int)
+        head_b_idx = np.loadtxt("./body_seg/head_b.txt", dtype=int)
+        ra_b_idx = np.loadtxt("./body_seg/ra_b.txt", dtype=int)
+        la_b_idx = np.loadtxt("./body_seg/la_b.txt", dtype=int)
+        rl_b_idx = np.loadtxt("./body_seg/rl_b.txt", dtype=int)
+        ll_b_idx = np.loadtxt("./body_seg/ll_b.txt", dtype=int)
         new_body_front = recombination(head_idx=head_idx, right_arm_idx=ra_idx, left_arm_idx=la_idx, right_leg_idx=rl_idx,
                                  left_leg_idx=ll_idx,
                                  body_idx=body_idx, head_b_idx=head_b_idx, right_arm_b_idx=ra_b_idx,
@@ -356,13 +356,9 @@ def demo(model_type,checkpoints,input_f_root,input_b_root,vis=True,save=False):
         tf.get_default_graph().finalize()
 
 if __name__ == '__main__':
-    # root_w="/media/pm/Elements/waist2hip/centered_data/step2/waist/test_result/c2l_w/"
-    # root_h = "/media/pm/Elements/waist2hip/centered_data/step2/hip/test_result/c2l_h/"
-    model_type="fc_new"
-    checkpoint_path="/media/pm/Elements/partial2complete/code_new/log/new_test1"+"/model-300000"
+    model_type="step1"
+    checkpoint_path="./log/step1"+"/model-300000"
 
-    # path_w=root_w+'fc_w'
-    path_w="/media/pm/Elements/partial2complete/centered_data/test/input_pcd"
-    # path_h = root_h + 'fc_h'
-    path_h="/media/pm/Elements/partial2complete/centered_data/test/input_pcd"
+    path_front="/media/pm/Elements/partial2complete/centered_data/test/input_pcd"
+    path_back="/media/pm/Elements/partial2complete/centered_data/test/input_pcd"
     demo(model_type=model_type,checkpoints=checkpoint_path,input_f_root=path_w,input_b_root=path_h,vis=False,save=True)#,vis=False,save=True
